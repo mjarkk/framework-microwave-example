@@ -1,1 +1,37 @@
 # users database collection
+
+# The first object contains the actual database data
+data:
+  name: string:required
+  username: string:required:unique
+  email: string:required:primary:unique
+  password: string:required:min=1
+  friends: 
+    - linked
+
+# give premissions who can eddit what
+premissions:
+  HOST:
+    delete: admin
+    edit:
+      - admin
+      - HOST.name
+    view:
+      - admin
+      - HOST.name
+  name:
+    view: norules
+  username:
+    view: norules
+  email:
+    view: norules
+  friends:
+    view: norules
+
+links:
+  - link: 'HOST.friends<>users'
+    duplicates: false # do not allow duplicates
+  
+# some random ideas
+# add: if something then someone has the premissions
+# add: data filter / transformer e.a. password needs to be slated

@@ -1,17 +1,24 @@
-# users database collection
+# cahts database collection
 
 # The first object contains the actual database data
 data:
-  name: string:required
-  username: string:required
-  email: string:required
-  password: string:required
-  friends: 
-    - data
+  hidden: required:boolean:default=false #or 
+  between:
+    - linked:required:min=2
+  chat:
+    - 
 
+# give premissions who can eddit what
 premissions:
   HOST:
-    - admin
-    - HOST:name
-  
-  
+    delete: admin
+    edit:
+      - admin
+      - HOST.name
+    view:
+      - admin
+      - HOST.name
+
+links:
+  - link: 'HOST.between<>users'
+    duplicates: false
