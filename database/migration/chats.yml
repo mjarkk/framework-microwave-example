@@ -1,0 +1,17 @@
+# users database collection
+
+# The first object contains the actual database data
+data:
+  name: string:required
+  username: string:required
+  email: string:required
+  password: string:required
+  friends: 
+    - data
+
+premissions:
+  HOST:
+    - admin
+    - HOST:name
+  
+  
