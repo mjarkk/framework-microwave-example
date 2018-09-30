@@ -29,7 +29,8 @@ premissions:
     view: norules
 
 links:
-  - link: 'HOST.friends<>users'
+  - from: HOST.friends
+    to: users
     duplicates: false # do not allow duplicates
   
 # some random ideas
