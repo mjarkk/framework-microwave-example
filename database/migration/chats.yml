@@ -6,7 +6,8 @@ data:
   between:
     - linked:required:min=2
   chat:
-    - 
+    - username: linked:required:string
+      message: required:min=1:string
 
 # give premissions who can eddit what
 premissions:
@@ -20,5 +21,8 @@ premissions:
       - HOST.name
 
 links:
-  - link: 'HOST.between<>users'
+  - from: HOST.between
+    to: users
     duplicates: false
+  - from: HOST.chat.username
+    to: users.username
