@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# compile and run the program
+
+go install 
+framework-microwave-example
