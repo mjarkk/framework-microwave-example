@@ -2,7 +2,7 @@
 
 # The first object contains the actual database data
 data:
-  hidden: required:boolean:default=false #or 
+  hidden: required:boolean:default=false # Chat is hidden (not visable for the user)
   between:
     - linked:required:min=2
   chat:
@@ -18,7 +18,7 @@ premissions:
       - HOST.name
     view:
       - admin
-      - HOST.name
+      - HOST.name & HOST.hidden=false
 
 links:
   - from: HOST.between
