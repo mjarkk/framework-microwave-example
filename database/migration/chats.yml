@@ -3,24 +3,29 @@
 # The first object contains the actual database data
 data:
   hidden: required:boolean:default=false # Chat is hidden (not visable for the user)
+  createdBy: string:required:linked # Chat is created by ...
+  groupName: string:required
+  groupIcon: file
+  whoCanEdit: 
+    - string:required:default=[HOST.createdBy]
   between:
     - linked:required:min=2
   chat:
     - username: linked:required:string
       message: required:min=1:string
+      picture: file
 
 # give premissions who can eddit what
 premissions:
   HOST:
-    delete: admin
-    edit:
-      - admin
-      - HOST.name
+    add: logedIn
     view:
       - admin
-      - HOST.name & HOST.hidden=false
+      - user(HOST.createdBy) & user(HOST.between.username) & HOST.hidden=false
 
 links:
+  - from: HOST.createdBy
+    to: users.username
   - from: HOST.between
     to: users
     duplicates: false

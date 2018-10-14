@@ -15,10 +15,10 @@ premissions:
     delete: admin
     edit:
       - admin
-      - HOST.name
+      - user(HOST.name)
     view:
       - admin
-      - HOST.name
+      - user(HOST.name)
   name:
     view: norules
   username:
